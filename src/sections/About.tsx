@@ -1,3 +1,4 @@
+import Icon from "@/components/icons/Icon";
 import { education, techStack, workExperience } from "@/constants/about-page-data";
 
 const About = () => {
@@ -67,7 +68,11 @@ const About = () => {
                         <p className="text-lg font-semibold">{techStack.title}</p>
                         <ul className="flex flex-wrap gap-4 text-sm">
                             {techStack.items.map((tech, index) => (
-                                <li key={index} className="py-1 px-3 rounded-full border-1">
+                                <li
+                                    key={index}
+                                    className="py-1 px-3 rounded-full border-1 flex gap-2 items-center"
+                                >
+                                    <Icon name={tech} className="h-[14px] w-[14px]" />
                                     {tech}
                                 </li>
                             ))}
