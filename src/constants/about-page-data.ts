@@ -2,25 +2,44 @@ export const workExperience = {
     title: "Work Experience",
     items: [
         {
-            company: "Clinical AI Assistance",
-            position: "Front-End Developer Intern",
+            company: "PhilCentro Technologies Inc.",
+            position: "Junior Software Engineer",
             location: "Pasay, Philippines",
-            duration: "Apr 2024 - Oct 2024",
+            duration: "Jun 2024 - Current",
             responsibilities: [
-                "Improved website performance, increasing mobile traffic by 10%",
-                "Developed a mental health tracking platform, adopted by 700+ students",
-                "Fixed UI bugs, reducing complaints by 50%",
+                `
+                    Developed and maintained the front-end of a Project Management and Monitoring System using
+                    HTML, CSS, JavaScript, TypeScript, Next.js, while implementing Formik for form handling, Tailwind
+                    for styling, and Bitbucket for version control.
+                `,
+                `
+                    Designed and implemented a dynamic, reusable component to enhance user interaction and
+                    streamline functionality.
+                `,
+                `Integrating APIs using RESTful and Axios.`,
+                `Optimized and refactored existing code to enhance performance, maintainability, and readability.`,
+                `Implemented a functionality to upload files to an AWS S3 bucket.`,
+                `Collaborated with other development teams`,
             ],
         },
         {
-            company: "TechNova Solutions",
-            position: "UI/UX Developer Intern",
+            company: "Xurpas Inc.",
+            position: "Front-end Developer Intern",
             location: "Makati, Philippines",
-            duration: "Jun 2023 - Dec 2023",
+            duration: "Mar - Jun 2023",
             responsibilities: [
-                "Redesigned the internal dashboard interface, improving usability scores by 25%",
-                "Collaborated with back-end developers to implement responsive user interfaces",
-                "Conducted A/B testing to optimize user workflows and boost conversion rates",
+                `
+                    Participated actively in sprint planning and daily stand-up meetings in accordance with Agile
+                    development principles in order to report on progress, spot any obstacles, and work with the
+                    Scrum team to jointly organize the day's tasks.
+                `,
+                `
+                    Developed the front-end of a website to ensure seamless user experiences by utilizing a tech stack
+                    that includes HTML, CSS, JavaScript, React.js, Next.js, TypeScript, Apollo GraphQL, Ant Design, and
+                    version control through Bitbucket.
+                `,
+                `Collaborated with other development teams.`,
+                `Completed React.js training course in Udemy.`,
             ],
         },
     ],

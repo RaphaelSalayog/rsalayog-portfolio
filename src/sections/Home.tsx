@@ -14,9 +14,9 @@ const Home = () => {
                         Focusing primarily on front-end technologies and will continuously broaden
                         my expertise by exploring back-end technologies.
                     </p>
-                    <div className="grid grid-cols-2 gap-x-3 w-[50%]">
-                        <Button>👋 Let's Connect</Button>
-                        <Button>My Resume</Button>
+                    <div className="grid grid-cols-2 gap-x-3 w-[50%] text-lg">
+                        <Button className="rounded-full">👋 Let's Connect</Button>
+                        <Button className="rounded-full">My Resume</Button>
                     </div>
                 </div>
             </div>
