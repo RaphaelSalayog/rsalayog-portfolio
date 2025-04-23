@@ -9,10 +9,14 @@ export default function Page() {
         <div>
             <main>
                 <Home />
-                <About />
-                <WorkExperience />
-                <PersonalProjects />
-                <ContactMe />
+                <div className="flex justify-center">
+                    <div className="max-w-[60%]">
+                        <About />
+                        <WorkExperience />
+                        <PersonalProjects />
+                        <ContactMe />
+                    </div>
+                </div>
             </main>
             <footer></footer>
         </div>

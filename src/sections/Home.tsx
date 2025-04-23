@@ -4,12 +4,13 @@ import StarField from "@/components/StarField";
 
 const Home = () => {
     return (
-        <section className="min-h-dvh">
+        <section className="min-h-dvh flex flex-col justify-center">
+            <StarField />
             <div className="flex flex-col items-center">
-                <div className="max-w-[60%] flex flex-col items-center text-center">
-                    <h1 className="text-4xl font-bold">Hi, I'm Raphael Salayog</h1>
-                    <p>Software Developer</p>
-                    <p>
+                <div className="max-w-[60%] flex flex-col items-center text-center space-y-4">
+                    <h1 className="text-6xl font-bold">Hi, I'm Raphael Salayog</h1>
+                    <h2 className="text-5xl font-bold">Software Developer</h2>
+                    <p className="text-xl">
                         Focusing primarily on front-end technologies and will continuously broaden
                         my expertise by exploring back-end technologies.
                     </p>
@@ -19,7 +20,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <StarField />
             <Moon />
         </section>
     );

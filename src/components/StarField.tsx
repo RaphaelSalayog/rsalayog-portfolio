@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useRef } from "react";
+import { PointMaterial, Points, Preload } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload } from "@react-three/drei";
 import { inSphere } from "maath/random";
+import { Suspense, useRef } from "react";
 
 const StarFieldCanvas = () => {
     const StarField = (props: any) => {
@@ -31,7 +31,7 @@ const StarFieldCanvas = () => {
     };
 
     return (
-        <div className="w-full h-auto absolute inset-0 z-[-1]">
+        <div className="w-full h-auto absolute inset-0 -z-20">
             <Canvas camera={{ position: [0, 0, 1] }}>
                 <Suspense fallback={<div>loading ...</div>}>
                     <StarField />
