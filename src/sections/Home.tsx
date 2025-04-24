@@ -13,8 +13,8 @@ const Home = () => {
                     <h1 className="text-6xl font-bold">Hi, I'm Raphael Salayog</h1>
                     <h2 className="text-5xl font-bold">Software Developer</h2>
                     <p className="text-xl">
-                        Focusing primarily on front-end technologies and will continuously broaden
-                        my expertise by exploring back-end technologies.
+                        A Full Stack Developer passionate about transforming ideas into fast,
+                        functional, and beautiful digital experiences.
                     </p>
                     <div className="grid grid-cols-2 gap-x-3 w-[50%] text-lg">
                         <Button
@@ -29,7 +29,18 @@ const Home = () => {
                         >
                             👋 Let's Connect
                         </Button>
-                        <Button className="rounded-full">My Resume</Button>
+                        <Button
+                            onClick={() =>
+                                window.open(
+                                    "https://drive.google.com/file/d/13dSTRyEoRgtlh0K6urVI-fjhg1g_aT-U/view?usp=sharing",
+                                    "_blank",
+                                    "noopener,noreferrer"
+                                )
+                            }
+                            className="rounded-full"
+                        >
+                            My Resume
+                        </Button>
                     </div>
                 </div>
             </div>

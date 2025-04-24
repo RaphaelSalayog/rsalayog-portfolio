@@ -9,7 +9,10 @@ const ContactMe = () => {
             <p className="text-5xl font-semibold text-center py-1.5 mb-10 animated-rgb-text">
                 Keep In Touch.
             </p>
-            <p>I'm currently specializing in Front-end Development.</p>
+            <p>
+                While I currently specialize in Front-end Development, I'm open to opportunities as
+                a Full Stack Developer.
+            </p>
             <p className="mb-6">Feel free to get in touch and talk more about your projects.</p>
             <div className="w-1/2 space-y-6">
                 <p className="highlight-text">(+63) 945-147-2698</p>

@@ -1,5 +1,5 @@
 import About from "@/sections/About";
-import ContactMe from "@/sections/ContactMe";
+import ContactMe from "@/sections/Contact";
 import Home from "@/sections/Home";
 import PersonalProjects from "@/sections/PersonalProjects";
 

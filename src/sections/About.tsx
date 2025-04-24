@@ -1,6 +1,6 @@
 import Divider from "@/components/Divider";
 import Icon from "@/components/icons/Icon";
-import { education, techStack, workExperience } from "@/constants/aboutSection";
+import { education, profile, techStack, workExperience } from "@/constants/aboutSection";
 import Image from "next/image";
 
 const About = () => {
@@ -11,10 +11,11 @@ const About = () => {
             </p>
             <div className="grid grid-cols-3">
                 <div className="flex flex-col items-center py-6 px-8 border-r-1 border-neutral-600 space-y-4">
-                    <div className="w-48 h-48 p-[5px] rounded-full bg-gradient-to-r from-[#545edc] via-[#a54099] to-[#ff6e39]">
-                        <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                    <div className="relative w-48 h-48 flex items-center justify-center">
+                        <div className="absolute inset-0 p-[5px] rounded-full bg-gradient-to-r from-[#545edc] via-[#a54099] to-[#ff6e39] animate-spin" />
+                        <div className="relative w-[95%] h-[95%] rounded-full overflow-hidden bg-white z-10">
                             <Image
-                                src="/profile-picture.jpg"
+                                src={profile.image}
                                 alt="Profile Picture"
                                 width={300}
                                 height={300}
@@ -22,14 +23,8 @@ const About = () => {
                             />
                         </div>
                     </div>
-                    <p className="text-justify">
-                        I'm a passionate Full-Stack Developer who loves building dynamic,
-                        user-friendly applications. I thrive on solving problems, creating seamless
-                        experiences, and continuously expanding my skills. Always eager to learn and
-                        grow, I'm currently looking for new opportunities to contribute and
-                        innovate.
-                    </p>
-                    <p className="italic">Bulacan, Philippines</p>
+                    <p className="text-justify">{profile.description}</p>
+                    <p className="italic">{profile.location}</p>
                 </div>
                 <div className="col-span-2 py-6 px-8">
                     <div className="space-y-4">

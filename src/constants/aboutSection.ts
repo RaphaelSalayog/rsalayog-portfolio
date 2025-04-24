@@ -1,3 +1,15 @@
+export const profile = {
+    image: "/profile-picture.jpg",
+    description: `
+        I'm a passionate Full-Stack Developer who loves building dynamic,
+        user-friendly applications. I thrive on solving problems, creating seamless
+        experiences, and continuously expanding my skills. Always eager to learn and
+        grow, I'm currently looking for new opportunities to contribute and
+        innovate.
+    `,
+    location: "Bulacan, Philippines",
+};
+
 export const workExperience = {
     title: "Work Experience",
     items: [
