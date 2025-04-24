@@ -1,3 +1,4 @@
+import NavBar from "@/components/NavBar";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
@@ -21,15 +22,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${outfit.variable} antialiased`}>
-                <div className="fixed top-0 w-full flex justify-between py-8 px-14 text-base">
-                    <p>LOGO</p>
-                    <ul className="flex space-x-14">
-                        <li className="cursor-pointer">Home</li>
-                        <li className="cursor-pointer">About</li>
-                        <li className="cursor-pointer">Project</li>
-                        <li className="cursor-pointer">Contact</li>
-                    </ul>
-                </div>
+                <NavBar />
                 {children}
             </body>
         </html>

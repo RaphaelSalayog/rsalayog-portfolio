@@ -72,7 +72,7 @@ export const techStack = {
         "Redux",
         "Node.js",
         "Express.js",
-        "GraphQL",
+        "Apollo GraphQL",
         "MySQL",
         "PostgreSQL",
         "MongoDB",

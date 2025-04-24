@@ -1,11 +1,11 @@
 import Divider from "@/components/Divider";
 import Icon from "@/components/icons/Icon";
-import { education, techStack, workExperience } from "@/constants/about-page-data";
+import { education, techStack, workExperience } from "@/constants/aboutSection";
 import Image from "next/image";
 
 const About = () => {
     return (
-        <section className="min-h-dvh py-16">
+        <section id="about" className="min-h-dvh py-16">
             <p className="text-5xl font-semibold text-center py-1.5 mb-10 animated-rgb-text">
                 About Me
             </p>
@@ -39,11 +39,11 @@ const About = () => {
                                 <div className="mb-2">
                                     <div className="flex justify-between">
                                         <p>{item.company}</p>
-                                        <p>{item.duration}</p>
-                                    </div>
-                                    <div className="flex justify-between italic">
-                                        <p>{item.position}</p>
                                         <p>{item.location}</p>
+                                    </div>
+                                    <div className="flex justify-between italic highlight-text">
+                                        <p>{item.position}</p>
+                                        <p>{item.duration}</p>
                                     </div>
                                 </div>
                                 <ul className="list-disc marker:text-white text-white pl-5">

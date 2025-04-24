@@ -16,7 +16,11 @@ export default function Page() {
                     </div>
                 </div>
             </main>
-            <footer></footer>
+            <footer className="py-10 ">
+                <p className="text-center">
+                    Developed by <span className="highlight-text">Raphael Salayog</span>
+                </p>
+            </footer>
         </div>
     );
 }
