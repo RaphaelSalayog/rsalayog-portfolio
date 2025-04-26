@@ -9,7 +9,7 @@ import Image from "next/image";
 const PersonalProjects = () => {
     return (
         <section id="project" className="min-h-dvh py-16">
-            <p className="text-3xl font-semibold text-center py-1.5 mb-10 animated-rgb-text sm:text-5xl">
+            <p className="text-3xl font-semibold text-center py-1.5 mb-10 animated-rgb-text sm:text-4xl md:text-5xl">
                 Personal Projects
             </p>
             <div className="space-y-4">
@@ -22,7 +22,7 @@ const PersonalProjects = () => {
                             onClick={() =>
                                 window.open(project.video, "_blank", "noopener,noreferrer")
                             }
-                            className="peer p-[5px] cursor-pointer rounded-lg bg-gradient-to-r from-[#545edc] via-[#a54099] to-[#ff6e39] top-20 left-1/2 z-10 transition-all duration-500 ease-in-out transform sm:hover:-translate-x-1/2 hover:-translate-y-1/2 hover:top-1/2 sm:w-[65%] sm:h-[90%] sm:absolute"
+                            className="peer p-[5px] cursor-pointer rounded-lg bg-gradient-to-r from-[#545edc] via-[#a54099] to-[#ff6e39] top-20 left-1/2 z-10 transition-all duration-500 ease-in-out transform md:hover:-translate-x-1/2 hover:-translate-y-1/2 hover:top-1/2 md:w-[65%] md:h-[90%] md:absolute"
                         >
                             <div className="w-full h-full rounded-sm overflow-hidden bg-white">
                                 <Image
@@ -34,7 +34,7 @@ const PersonalProjects = () => {
                                 />
                             </div>
                         </div>
-                        <div className="peer-hover:blur-sm flex flex-col justify-between space-y-8 transition-all duration-300 ease-in-out sm:w-[48%]">
+                        <div className="peer-hover:blur-sm flex flex-col justify-between space-y-8 transition-all duration-300 ease-in-out md:w-[48%]">
                             <div className="space-y-4">
                                 <p className="font-semibold text-lg">{project.title}</p>
                                 <Divider />

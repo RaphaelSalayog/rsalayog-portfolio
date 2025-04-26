@@ -9,14 +9,18 @@ const Home = () => {
         <section id="home" className="min-h-dvh flex flex-col justify-center pt-36">
             <StarField />
             <div className="flex flex-col items-center z-10">
-                <div className="max-w-[90%] flex flex-col items-center text-center space-y-4 sm:max-w-[60%]">
-                    <h1 className="text-4xl font-bold sm:text-6xl">Hi, I'm Raphael Salayog</h1>
-                    <h2 className="text-3xl font-bold sm:text-5xl">Software Developer</h2>
-                    <p className="text-base sm:text-xl">
+                <div className="max-w-[90%] flex flex-col items-center text-center space-y-4 md:max-w-[80%] xl:max-w-[75%]">
+                    <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">
+                        Hi, I'm Raphael Salayog
+                    </h1>
+                    <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">
+                        Software Developer
+                    </h2>
+                    <p className="text-base sm:text-lg md:text-xl">
                         A Full Stack Developer passionate about transforming ideas into fast,
                         functional, and beautiful digital experiences.
                     </p>
-                    <div className="grid grid-cols-1 gap-y-3 w-[100%] text-base sm:w-[50%] sm:text-lg sm:grid-cols-2 sm:gap-x-3">
+                    <div className="grid grid-cols-1 gap-y-3 w-full text-base sm:text-lg sm:grid-cols-2 sm:gap-x-3 md:w-[100%] lg:w-[90%] xl:w-[80%]">
                         <Button
                             onClick={() =>
                                 window.open(

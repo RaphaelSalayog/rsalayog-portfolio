@@ -6,7 +6,7 @@ import Icon from "@/components/icons/Icon";
 const ContactMe = () => {
     return (
         <section id="contact" className="flex flex-col items-center pt-16 pb-44 text-center">
-            <p className="text-5xl font-semibold text-center py-1.5 mb-10 animated-rgb-text">
+            <p className="text-3xl font-semibold text-center py-1.5 mb-10 animated-rgb-text sm:text-4xl md:text-5xl">
                 Keep In Touch.
             </p>
             <p>
@@ -14,7 +14,7 @@ const ContactMe = () => {
                 a Full Stack Developer.
             </p>
             <p className="mb-6">Feel free to get in touch and talk more about your projects.</p>
-            <div className="w-full space-y-6 sm:w-1/2">
+            <div className="w-full space-y-6 md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:[50%]">
                 <p className="highlight-text">(+63) 945-147-2698</p>
                 <p className="text-[12px]">Or send a message</p>
                 <div className="grid grid-cols-2 gap-x-4 text-sm font-semibold">

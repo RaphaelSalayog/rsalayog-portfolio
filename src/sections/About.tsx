@@ -6,12 +6,12 @@ import Image from "next/image";
 const About = () => {
     return (
         <section id="about" className="min-h-dvh py-16">
-            <p className="text-3xl font-semibold text-center py-1.5 mb-10 animated-rgb-text sm:text-5xl">
+            <p className="text-3xl font-semibold text-center py-1.5 mb-10 animated-rgb-text sm:text-4xl md:text-5xl">
                 About Me
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3">
-                <div className="flex flex-col items-center border-r-0 border-neutral-600 space-y-4 sm:border-r-1 sm:py-6 sm:px-8">
-                    <div className="relative w-40 h-40 flex items-center justify-center sm:w-48 sm:h-48">
+            <div className="grid grid-cols-1 md:grid-cols-3">
+                <div className="flex flex-col items-center border-r-0 border-neutral-600 space-y-4 md:border-r-1 md:py-6 md:px-8">
+                    <div className="relative w-40 h-40 flex items-center justify-center md:w-48 md:h-48">
                         <div className="absolute inset-0 p-[5px] rounded-full bg-gradient-to-r from-[#545edc] via-[#a54099] to-[#ff6e39] animate-spin" />
                         <div className="relative w-[95%] h-[95%] rounded-full overflow-hidden bg-white z-10">
                             <Image
@@ -26,10 +26,10 @@ const About = () => {
                     <p className="text-center sm:text-justify">{profile.description}</p>
                     <p className="italic">{profile.location}</p>
                 </div>
-                <div className="block sm:hidden">
+                <div className="block md:hidden">
                     <Divider />
                 </div>
-                <div className="sm:col-span-2 sm:py-6 sm:px-8">
+                <div className="md:col-span-2 sm:py-6 sm:px-8">
                     <div className="space-y-4">
                         <p className="text-lg font-semibold">{workExperience.title}</p>
                         {workExperience.items.map((item, index) => (
