@@ -9,7 +9,7 @@ export default function Page() {
             <main>
                 <Home />
                 <div className="flex justify-center">
-                    <div className="max-w-[60%]">
+                    <div className="max-w-[90%] sm:max-w-[60%]">
                         <About />
                         <PersonalProjects />
                         <ContactMe />

@@ -6,12 +6,12 @@ import Image from "next/image";
 const About = () => {
     return (
         <section id="about" className="min-h-dvh py-16">
-            <p className="text-5xl font-semibold text-center py-1.5 mb-10 animated-rgb-text">
+            <p className="text-3xl font-semibold text-center py-1.5 mb-10 animated-rgb-text sm:text-5xl">
                 About Me
             </p>
-            <div className="grid grid-cols-3">
-                <div className="flex flex-col items-center py-6 px-8 border-r-1 border-neutral-600 space-y-4">
-                    <div className="relative w-48 h-48 flex items-center justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3">
+                <div className="flex flex-col items-center border-r-0 border-neutral-600 space-y-4 sm:border-r-1 sm:py-6 sm:px-8">
+                    <div className="relative w-40 h-40 flex items-center justify-center sm:w-48 sm:h-48">
                         <div className="absolute inset-0 p-[5px] rounded-full bg-gradient-to-r from-[#545edc] via-[#a54099] to-[#ff6e39] animate-spin" />
                         <div className="relative w-[95%] h-[95%] rounded-full overflow-hidden bg-white z-10">
                             <Image
@@ -23,20 +23,23 @@ const About = () => {
                             />
                         </div>
                     </div>
-                    <p className="text-justify">{profile.description}</p>
+                    <p className="text-center sm:text-justify">{profile.description}</p>
                     <p className="italic">{profile.location}</p>
                 </div>
-                <div className="col-span-2 py-6 px-8">
+                <div className="block sm:hidden">
+                    <Divider />
+                </div>
+                <div className="sm:col-span-2 sm:py-6 sm:px-8">
                     <div className="space-y-4">
                         <p className="text-lg font-semibold">{workExperience.title}</p>
                         {workExperience.items.map((item, index) => (
                             <div key={index} className="border-l-3 border-neutral-200 pl-6">
                                 <div className="mb-2">
-                                    <div className="flex justify-between">
+                                    <div className="sm:flex sm:justify-between">
                                         <p>{item.company}</p>
                                         <p>{item.location}</p>
                                     </div>
-                                    <div className="flex justify-between italic highlight-text">
+                                    <div className="italic highlight-text sm:flex sm:justify-between">
                                         <p>{item.position}</p>
                                         <p>{item.duration}</p>
                                     </div>
@@ -53,11 +56,11 @@ const About = () => {
                     <div className="space-y-4">
                         <p className="text-lg font-semibold">{education.title}</p>
                         <div className="mb-2">
-                            <div className="flex justify-between">
+                            <div className="sm:flex sm:justify-between">
                                 <p>{education.details.school}</p>
                                 <p>{education.details.duration}</p>
                             </div>
-                            <div className="flex justify-between">
+                            <div className="sm:flex sm:justify-between italic">
                                 <p>{education.details.degree}</p>
                                 <p>{education.details.honors}</p>
                             </div>

@@ -14,7 +14,7 @@ const ContactMe = () => {
                 a Full Stack Developer.
             </p>
             <p className="mb-6">Feel free to get in touch and talk more about your projects.</p>
-            <div className="w-1/2 space-y-6">
+            <div className="w-full space-y-6 sm:w-1/2">
                 <p className="highlight-text">(+63) 945-147-2698</p>
                 <p className="text-[12px]">Or send a message</p>
                 <div className="grid grid-cols-2 gap-x-4 text-sm font-semibold">
