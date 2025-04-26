@@ -13,10 +13,10 @@ const Home = () => {
                     <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">
                         Hi, I'm Raphael Salayog
                     </h1>
-                    <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">
+                    <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl mb-6 md:mb-8">
                         Software Developer
                     </h2>
-                    <p className="text-base sm:text-lg md:text-xl">
+                    <p className="text-base sm:text-lg md:text-xl mb-8 md:mb-10">
                         A Full Stack Developer passionate about transforming ideas into fast,
                         functional, and beautiful digital experiences.
                     </p>
