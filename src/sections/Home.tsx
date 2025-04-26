@@ -27,7 +27,7 @@ const Home = () => {
                             }
                             className="rounded-full"
                         >
-                            👋 Let's Connect
+                            <span className="animate-handwave">👋</span> Let's Connect
                         </Button>
                         <Button
                             onClick={() =>

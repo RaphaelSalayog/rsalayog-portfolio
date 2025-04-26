@@ -2,6 +2,30 @@ export const projects = {
     title: "Personal Projects",
     items: [
         {
+            title: "Messaging App",
+            description: `A simple messaging app that lets users send and receive text messages in real time.`,
+            image: "/messaging-app.png",
+            video: "https://drive.google.com/file/d/1NpyPkkWvoW0rDz00E3T8LFgpO0CR3zpE/view?usp=sharing",
+            sourceCode: {
+                frontend: "https://github.com/RaphaelSalayog/message-app-client",
+                backend: "https://github.com/RaphaelSalayog/message-app-server",
+            },
+            techStack: [
+                "HTML",
+                "CSS",
+                "TypeScript",
+                "Next.js",
+                "Express.js",
+                "PostgreSQL",
+                "Sequelize",
+                "Socket.io",
+                "Ant Design",
+                "Axios",
+                "RESTful API",
+                "JSON Web Token",
+            ],
+        },
+        {
             title: "Sales and Inventory Management System",
             description: `The Sales and Inventory Management System is a comprehensive software solution designed to streamline the processes of managing sales transactions and inventory levels for businesses.`,
             image: "/zyamura.png",
