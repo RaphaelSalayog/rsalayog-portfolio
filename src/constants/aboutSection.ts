@@ -31,7 +31,7 @@ export const workExperience = {
                 `Integrating APIs using RESTful and Axios.`,
                 `Optimized and refactored existing code to enhance performance, maintainability, and readability.`,
                 `Implemented a functionality to upload files to an AWS S3 bucket.`,
-                `Collaborated with other development teams`,
+                `Assist with implementing payment gateway integration.`,
             ],
         },
         {
