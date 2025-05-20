@@ -17,7 +17,7 @@ export const workExperience = {
             company: "PhilCentro Technologies Inc.",
             position: "Junior Software Engineer",
             location: "Pasay, Philippines",
-            duration: "Jun 2024 - Current",
+            duration: "Jun 2024 - May 2025",
             responsibilities: [
                 `
                     Developed and maintained the front-end of a Project Management and Monitoring System using
