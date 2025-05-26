@@ -36,7 +36,7 @@ const Home = () => {
                         <Button
                             onClick={() =>
                                 window.open(
-                                    "https://drive.google.com/file/d/1o6rAw6Yk1MO8JEL3bxWMgLpgHaMhihOJ/view?usp=sharing",
+                                    "https://drive.google.com/file/d/1ntCtkwHnQxh5D6TN1fx7NhikcXL4nuSc/view?usp=sharing",
                                     "_blank",
                                     "noopener,noreferrer"
                                 )
