@@ -50,29 +50,26 @@ body {
 .animated-rgb-text {
     background-image: linear-gradient(
         to right,
-        #545edc,
         #d152c4,
         #ff5e99,
         #ff8c6f,
         #ffc459,
-        #f9f871
+        #f9f871,
+        #ffc459,
+        #ff8c6f,
+        #ff5e99,
+        #d152c4
     );
-    background-size: 150% 100%;
-    background-position: 0% 0%;
+    background-size: 200%;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: rgbFlow 6s ease-in-out infinite;
+    animation: rgbFlow 3s linear infinite;
 }
 
 @keyframes rgbFlow {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 0%;
-    }
-    100% {
-        background-position: 0% 0%;
+    to {
+        background-position: 200%;
     }
 }
 
