@@ -17,7 +17,7 @@ const ContactMe = () => {
             <div className="w-full space-y-6 md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:[50%]">
                 <p className="highlight-text">(+63) 945-147-2698</p>
                 <p className="text-[12px]">Or send a message</p>
-                <div className="grid grid-cols-2 gap-x-4 text-sm font-semibold">
+                <div className="grid grid-cols-1 gap-4 text-sm font-semibold sm:grid-cols-2">
                     <Button
                         onClick={() =>
                             window.open(
