@@ -22,15 +22,15 @@ const PersonalProjects = () => {
                             onClick={() =>
                                 window.open(project.video, "_blank", "noopener,noreferrer")
                             }
-                            className="peer p-[5px] cursor-pointer rounded-lg bg-gradient-to-r from-[#545edc] via-[#a54099] to-[#ff6e39] top-20 left-1/2 z-10 transition-all duration-500 ease-in-out transform md:hover:-translate-x-1/2 hover:-translate-y-1/2 hover:top-1/2 md:w-[65%] md:h-[90%] md:absolute"
+                            className="peer top-20 left-1/2 cursor-pointer z-10 transition-all duration-500 ease-in-out transform hover:-translate-y-1/2 hover:top-1/2 md:absolute md:w-[65%] md:h-[90%] md:hover:-translate-x-1/2"
                         >
-                            <div className="w-full h-full rounded-sm overflow-hidden bg-white">
+                            <div className="card-conic-gradient p-[5px] after:rounded-lg before:rounded-lg">
                                 <Image
                                     src={project.image}
                                     alt="Profile Picture"
                                     width={1000}
                                     height={1000}
-                                    className="object-cover w-full h-full"
+                                    className="object-cover w-full h-full rounded-sm"
                                 />
                             </div>
                         </div>

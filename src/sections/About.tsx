@@ -11,15 +11,14 @@ const About = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3">
                 <div className="flex flex-col items-center border-r-0 border-neutral-600 space-y-4 md:border-r-1 md:py-6 md:px-8">
-                    <div className="relative w-40 h-40 flex items-center justify-center md:w-48 md:h-48">
-                        <div className="absolute inset-0 p-[5px] rounded-full bg-gradient-to-r from-[#545edc] via-[#a54099] to-[#ff6e39] animate-spin" />
-                        <div className="relative w-[95%] h-[95%] rounded-full overflow-hidden bg-white z-10">
+                    <div className="relative w-40 h-40 md:w-48 md:h-48">
+                        <div className="card-conic-gradient p-[5px] after:rounded-full before:rounded-full">
                             <Image
                                 src={profile.image}
                                 alt="Profile Picture"
                                 width={300}
                                 height={300}
-                                className="object-cover w-full h-full"
+                                className="object-cover w-full h-full rounded-full"
                             />
                         </div>
                     </div>
