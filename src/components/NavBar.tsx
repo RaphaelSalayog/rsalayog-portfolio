@@ -1,7 +1,8 @@
 "use client";
 
+import { AnimatePresence, m } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CustomIcon from "./icons/CustomIcon";
 
 const navList = [
@@ -14,8 +15,12 @@ const navList = [
         title: "About",
     },
     {
-        id: "project",
-        title: "Project",
+        id: "experience",
+        title: "Experience",
+    },
+    {
+        id: "projects",
+        title: "Projects",
     },
     {
         id: "contact",
@@ -26,113 +31,148 @@ const navList = [
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
+    const openButtonRef = useRef<HTMLButtonElement>(null);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         const onScroll = () => {
-            setIsScrolled(window.scrollY > 0);
+            setIsScrolled(window.scrollY > 24);
         };
 
+        onScroll();
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    return (
-        <div
-            className={`fixed top-0 w-full text-base z-50 transition-all duration-300 ease-in-out ${
-                isScrolled && "bg-[#1A191E] shadow-lg"
-            }`}
+    useEffect(() => {
+        const sections = navList
+            .map((item) => document.getElementById(item.id))
+            .filter((section): section is HTMLElement => Boolean(section));
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visibleEntry = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+                if (visibleEntry) setActiveSection(visibleEntry.target.id);
+            },
+            { rootMargin: "-32% 0px -55%", threshold: [0, 0.25, 0.5] }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        closeButtonRef.current?.focus();
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setIsOpen(false);
+                openButtonRef.current?.focus();
+            }
+        };
+
+        window.addEventListener("keydown", onKeyDown);
+        return () => {
+            document.body.style.overflow = previousOverflow;
+            window.removeEventListener("keydown", onKeyDown);
+        };
+    }, [isOpen]);
+
+    const navLink = (nav: (typeof navList)[number], mobile = false) => (
+        <Link
+            key={nav.id}
+            href={`#${nav.id}`}
+            className={mobile ? "mobile-nav-link" : "nav-link"}
+            aria-current={activeSection === nav.id ? "location" : undefined}
+            onClick={() => mobile && setIsOpen(false)}
         >
-            <div className="md:hidden">
-                <div className="flex justify-between items-center py-6 px-10 md:hidden">
-                    <Link href={"#home"} className="">
-                        RS
-                    </Link>
-                    <button
-                        className="block p-2 rounded-[100%] bg-[#3f3e44]"
-                        onClick={() => setIsOpen((prev) => !prev)}
-                    >
-                        <CustomIcon.Menu isOpen={false} className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </button>
-                </div>
-                <div
-                    className={`absolute top-0 left-0 w-full h-screen py-7 px-14 space-y-10 bg-[#3f3e44] transition-all duration-300 ease-in-out sm:py-10 sm:px-20
-                    ${isOpen ? "max-md:translate-x-0" : "max-md:-translate-x-full"}
-                `}
-                >
-                    <div className="flex justify-between items-center">
-                        <Link href={"#home"} className="">
-                            RS
-                        </Link>
-                        <button
-                            className="block p-2 rounded-[100%] bg-[#3f3e44] md:hidden"
-                            onClick={() => setIsOpen((prev) => !prev)}
-                        >
-                            <CustomIcon.Menu isOpen={true} className="w-5 h-5" />
-                        </button>
-                    </div>
-                    <ul className="flex items-center max-md:flex-col max-md:space-y-10 md:space-x-14">
+            {nav.title}
+        </Link>
+    );
+
+    return (
+        <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
+            <div className="nav-shell">
+                <Link href="#home" className="brand-mark" aria-label="Raphael Salayog, home">
+                    <span>R</span>
+                    <span>S</span>
+                </Link>
+
+                <nav className="hidden md:block" aria-label="Primary navigation">
+                    <ul className="flex items-center gap-7 lg:gap-10">
                         {navList.map((nav) => (
-                            <li key={nav.id} className="cursor-pointer">
-                                <Link
-                                    href={`#${nav.id}`}
-                                    onClick={() => setIsOpen((prev) => !prev)}
-                                >
-                                    {nav.title}
-                                </Link>
-                            </li>
+                            <li key={nav.id}>{navLink(nav)}</li>
                         ))}
                     </ul>
-                </div>
+                </nav>
+
+                <button
+                    ref={openButtonRef}
+                    type="button"
+                    className="menu-button md:hidden"
+                    aria-label="Open navigation"
+                    aria-expanded={isOpen}
+                    aria-controls="mobile-navigation"
+                    onClick={() => setIsOpen(true)}
+                >
+                    <CustomIcon.Menu isOpen={false} className="size-5" />
+                </button>
             </div>
-            <div className="flex justify-between py-8 px-14 max-md:hidden">
-                <Link href={"#home"}>RS</Link>
-                <ul className="flex space-x-14">
-                    {navList.map((nav) => (
-                        <li key={nav.id} className="cursor-pointer">
-                            <Link href={`#${nav.id}`}>{nav.title}</Link>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </div>
+
+            <AnimatePresence>
+                {isOpen ? (
+                    <m.div
+                        id="mobile-navigation"
+                        className="mobile-nav md:hidden"
+                        initial={{ opacity: 0, clipPath: "circle(0% at calc(100% - 48px) 48px)" }}
+                        animate={{ opacity: 1, clipPath: "circle(150% at calc(100% - 48px) 48px)" }}
+                        exit={{ opacity: 0, clipPath: "circle(0% at calc(100% - 48px) 48px)" }}
+                        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <div className="flex items-center justify-between">
+                            <Link
+                                href="#home"
+                                className="brand-mark"
+                                onClick={() => setIsOpen(false)}
+                                aria-label="Raphael Salayog, home"
+                            >
+                                <span>R</span>
+                                <span>S</span>
+                            </Link>
+                            <button
+                                ref={closeButtonRef}
+                                type="button"
+                                className="menu-button"
+                                aria-label="Close navigation"
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    openButtonRef.current?.focus();
+                                }}
+                            >
+                                <CustomIcon.Menu isOpen className="size-5" />
+                            </button>
+                        </div>
+                        <nav className="flex flex-1 items-center" aria-label="Mobile navigation">
+                            <ul className="w-full space-y-2">
+                                {navList.map((nav) => (
+                                    <li key={nav.id}>{navLink(nav, true)}</li>
+                                ))}
+                            </ul>
+                        </nav>
+                        <p className="text-sm text-moonlight/55">Bulacan, Philippines</p>
+                    </m.div>
+                ) : null}
+            </AnimatePresence>
+        </header>
     );
 };
 
 export default NavBar;
-
-{
-    /* <div
-    className={`fixed right-0 w-full h-full py-6 px-10 overflow-hidden z-50 transition-all duration-500 ease-in-out before:absolute before:w-12 before:h-12 before:top-6 before:right-10 before:bg-[#3f3e44] before:rounded-[100%] before:-z-10 before:transition-all before:duration-500 before:ease-in-out ${
-        isOpen && "before:scale-[100]"
-    }`}
->
-    <button
-        className="float-right p-2 rounded-[100%] bg-[#3f3e44]"
-        onClick={() => setIsOpen((prev) => !prev)}
-    >
-        <CustomIcon.Menu isOpen={isOpen} />
-    </button>
-    <ul className="w-full h-full flex flex-col items-center pt-10 space-y-14">
-        <li className="cursor-pointer">
-            <Link href={"#home"} onClick={() => setIsOpen((prev) => !prev)}>
-                Home
-            </Link>
-        </li>
-        <li className="cursor-pointer">
-            <Link href={"#about"} onClick={() => setIsOpen((prev) => !prev)}>
-                About
-            </Link>
-        </li>
-        <li className="cursor-pointer">
-            <Link href={"#project"} onClick={() => setIsOpen((prev) => !prev)}>
-                Project
-            </Link>
-        </li>
-        <li className="cursor-pointer">
-            <Link href={"#contact"} onClick={() => setIsOpen((prev) => !prev)}>
-                Contact
-            </Link>
-        </li>
-    </ul>
-</div>; */
-}

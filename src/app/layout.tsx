@@ -1,18 +1,25 @@
+import MotionProvider from "@/components/MotionProvider";
 import NavBar from "@/components/NavBar";
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Syne } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
     subsets: ["latin"],
-    weight: ["400", "600", "700"], // Add weights you need
+    weight: ["400", "500", "600", "700"],
     variable: "--font-outfit",
 });
 
+const syne = Syne({
+    subsets: ["latin"],
+    weight: ["600", "700"],
+    variable: "--font-syne",
+});
+
 export const metadata: Metadata = {
-    title: "RS | Portfolio",
+    title: "Raphael Salayog | Frontend-led Full Stack Developer",
     description:
-        "Hi, I'm Raphael Salayog! Here's a showcase of projects, skills, and experience, highlighting expertise in web development, design, and modern technologies.",
+        "Raphael Salayog is a frontend-led Full Stack Developer building fast, functional, and polished digital experiences.",
 };
 
 export default function RootLayout({
@@ -21,10 +28,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${outfit.variable} antialiased`}>
-                <NavBar />
-                {children}
+        <html lang="en" className="dark">
+            <body className={`${outfit.variable} ${syne.variable} antialiased`}>
+                <MotionProvider>
+                    <NavBar />
+                    {children}
+                </MotionProvider>
             </body>
         </html>
     );

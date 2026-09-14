@@ -1,11 +1,10 @@
 export const profile = {
     image: "/profile-picture.jpg",
     description: `
-        I'm a passionate Full-Stack Developer who loves building dynamic,
-        user-friendly applications. I thrive on solving problems, creating seamless
-        experiences, and continuously expanding my skills. Always eager to learn and
-        grow, I'm currently looking for new opportunities to contribute and
-        innovate.
+        I'm a frontend-led Full Stack Developer who loves building dynamic,
+        user-friendly applications. I enjoy solving problems, creating seamless
+        experiences, and continuously expanding my skills. I'm currently looking
+        for new opportunities to contribute, learn, and innovate.
     `,
     location: "Bulacan, Philippines",
 };
@@ -20,18 +19,18 @@ export const workExperience = {
             duration: "Jun 2024 - May 2025",
             responsibilities: [
                 `
-                    Developed and maintained the front-end of a Project Management and Monitoring System using
-                    HTML, CSS, JavaScript, TypeScript, Next.js, while implementing Formik for form handling, Tailwind
-                    for styling, and Bitbucket for version control.
+                    Developed and maintained the frontend of a Project Management and Monitoring System using
+                    HTML, CSS, JavaScript, TypeScript, and Next.js, with Formik for form handling, Tailwind for
+                    styling, and Bitbucket for version control.
                 `,
                 `
-                    Designed and implemented a dynamic, reusable component to enhance user interaction and
+                    Designed and implemented dynamic, reusable components to enhance user interaction and
                     streamline functionality.
                 `,
-                `Integrating APIs using RESTful and Axios.`,
+                `Integrated APIs using RESTful services and Axios.`,
                 `Optimized and refactored existing code to enhance performance, maintainability, and readability.`,
-                `Implemented a functionality to upload files to an AWS S3 bucket.`,
-                `Assist with implementing payment gateway integration.`,
+                `Implemented functionality for uploading files to an AWS S3 bucket.`,
+                `Assisted with payment gateway integration.`,
             ],
         },
         {
@@ -41,17 +40,15 @@ export const workExperience = {
             duration: "Mar - Jun 2023",
             responsibilities: [
                 `
-                    Participated actively in sprint planning and daily stand-up meetings in accordance with Agile
-                    development principles in order to report on progress, spot any obstacles, and work with the
-                    Scrum team to jointly organize the day's tasks.
+                    Participated in sprint planning and daily stand-up meetings, reporting progress, identifying
+                    blockers, and coordinating daily priorities with the Scrum team.
                 `,
                 `
-                    Developed the front-end of a website to ensure seamless user experiences by utilizing a tech stack
-                    that includes HTML, CSS, JavaScript, React.js, Next.js, TypeScript, Apollo GraphQL, Ant Design, and
-                    version control through Bitbucket.
+                    Developed a website frontend using HTML, CSS, JavaScript, React.js, Next.js, TypeScript,
+                    Apollo GraphQL, Ant Design, and Bitbucket to create a seamless user experience.
                 `,
                 `Collaborated with other development teams.`,
-                `Completed React.js training course in Udemy.`,
+                `Completed a React.js training course on Udemy.`,
             ],
         },
     ],

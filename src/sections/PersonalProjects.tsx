@@ -1,97 +1,167 @@
 "use client";
 
-import Button from "@/components/Button";
-import Divider from "@/components/Divider";
+import ActionLink from "@/components/ActionLink";
+import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import Icon from "@/components/icons/Icon";
 import { projects } from "@/constants/projectsSections";
+import { AnimatePresence, m, useInView } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
+type Project = (typeof projects.items)[number];
+
+const ProjectTechList = ({ items }: { items: string[] }) => (
+    <ul className="project-tech-list" aria-label="Technologies used">
+        {items.map((tech) => (
+            <li key={tech}>
+                <Icon name={tech} className="size-3.5 shrink-0" />
+                {tech}
+            </li>
+        ))}
+    </ul>
+);
+
+const ProjectActions = ({ project }: { project: Project }) => (
+    <div className="project-actions">
+        <ActionLink href={project.video} external>
+            View demo
+        </ActionLink>
+        <ActionLink href={project.sourceCode.frontend} external variant="secondary">
+            <Icon name="GitHub" className="size-4" />
+            Frontend
+        </ActionLink>
+        <ActionLink href={project.sourceCode.backend} external variant="quiet">
+            <Icon name="GitHub" className="size-4" />
+            Backend
+        </ActionLink>
+    </div>
+);
+
+interface ProjectStepProps {
+    project: Project;
+    index: number;
+    activeIndex: number;
+    onActive: (index: number) => void;
+}
+
+const ProjectStep = ({ project, index, activeIndex, onActive }: ProjectStepProps) => {
+    const ref = useRef<HTMLElement>(null);
+    const isInView = useInView(ref, { margin: "-38% 0px -45% 0px" });
+
+    useEffect(() => {
+        if (isInView) onActive(index);
+    }, [index, isInView, onActive]);
+
+    return (
+        <article
+            ref={ref}
+            className={`project-step ${activeIndex === index ? "project-step--active" : ""}`}
+        >
+            <p className="project-count">
+                Project {index + 1} of {projects.items.length}
+            </p>
+            <h3>{project.title}</h3>
+            <p className="project-description">{project.description}</p>
+            <ProjectTechList items={project.techStack} />
+            <ProjectActions project={project} />
+        </article>
+    );
+};
+
+const MobileProjectCard = ({ project, index }: { project: Project; index: number }) => (
+    <Reveal className="mobile-project-card" delay={index * 0.06}>
+        <m.a
+            href={project.video}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mobile-project-image"
+            whileHover={{ scale: 1.015 }}
+            transition={{ duration: 0.25 }}
+            aria-label={`View ${project.title} demo`}
+        >
+            <Image
+                src={project.image}
+                alt={`${project.title} application interface`}
+                fill
+                sizes="(max-width: 1023px) 92vw, 50vw"
+                className="object-cover object-top"
+            />
+        </m.a>
+        <div className="space-y-5">
+            <p className="project-count">
+                Project {index + 1} of {projects.items.length}
+            </p>
+            <h3 className="font-display text-2xl text-starlight">{project.title}</h3>
+            <p className="project-description">{project.description}</p>
+            <ProjectTechList items={project.techStack} />
+            <ProjectActions project={project} />
+        </div>
+    </Reveal>
+);
 
 const PersonalProjects = () => {
+    const [activeProject, setActiveProject] = useState(0);
+    const project = projects.items[activeProject];
+
     return (
-        <section id="project" className="min-h-dvh py-16">
-            <p className="text-3xl font-semibold text-center py-1.5 mb-10 animated-rgb-text sm:text-4xl md:text-5xl">
-                Personal Projects
-            </p>
-            <div className="space-y-4">
-                {projects.items.map((project, index) => (
-                    <div
-                        key={index}
-                        className="relative flex flex-col-reverse gap-y-8 min-h-96 p-8 rounded-2xl border border-neutral-600 overflow-hidden"
-                    >
-                        <div
-                            onClick={() =>
-                                window.open(project.video, "_blank", "noopener,noreferrer")
-                            }
-                            className="peer top-20 left-1/2 cursor-pointer z-10 transition-all duration-500 ease-in-out transform hover:-translate-y-1/2 hover:top-1/2 md:absolute md:w-[65%] md:h-[90%] md:hover:-translate-x-1/2"
-                        >
-                            <div className="card-conic-gradient p-[5px] after:rounded-lg before:rounded-lg">
-                                <Image
-                                    src={project.image}
-                                    alt="Profile Picture"
-                                    width={1000}
-                                    height={1000}
-                                    className="object-cover w-full h-full rounded-sm"
-                                />
-                            </div>
-                        </div>
-                        <div className="peer-hover:blur-sm flex flex-col justify-between space-y-8 transition-all duration-300 ease-in-out md:w-[48%]">
-                            <div className="space-y-4">
-                                <p className="font-semibold text-lg">{project.title}</p>
-                                <Divider />
-                                <p>{project.description}</p>
-                                <div>
-                                    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-                                        {project.techStack.map((tech, index) => (
-                                            <li
-                                                key={index}
-                                                className="flex items-center py-1 px-3 gap-2 rounded-full border-1 border-neutral-600"
-                                            >
-                                                <Icon name={tech} className="h-[14px] w-[14px]" />
-                                                {tech}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-1 gap-4 text-sm font-semibold sm:grid-cols-2">
-                                <Button
-                                    onClick={() =>
-                                        window.open(
-                                            project.sourceCode.frontend,
-                                            "_blank",
-                                            "noopener,noreferrer"
-                                        )
-                                    }
-                                    className="flex items-center justify-center gap-x-2"
+        <section id="projects" className="section-spacing projects-section">
+            <div className="page-shell">
+                <Reveal>
+                    <SectionHeading
+                        title={projects.title}
+                        description="Selected builds that explore real-time communication, business operations, and data-driven applications."
+                    />
+                </Reveal>
+
+                <div className="hidden lg:grid lg:grid-cols-[minmax(0,1.08fr)_minmax(25rem,0.92fr)] lg:gap-16">
+                    <div className="sticky top-28 h-[min(68vh,42rem)] self-start">
+                        <div className="project-visual-shell">
+                            <AnimatePresence mode="sync" initial={false}>
+                                <m.a
+                                    key={project.title}
+                                    href={project.video}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="absolute inset-0 block overflow-hidden rounded-[1.6rem]"
+                                    initial={{ opacity: 0, scale: 0.975, y: 14 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 1.015, y: -10 }}
+                                    transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                                    whileHover={{ scale: 1.012 }}
+                                    aria-label={`View ${project.title} demo`}
                                 >
-                                    <Icon name={"GitHub"} className="h-[14px] w-[14px]" />
-                                    Frontend
-                                </Button>
-                                <Button
-                                    onClick={() =>
-                                        window.open(
-                                            project.sourceCode.backend,
-                                            "_blank",
-                                            "noopener,noreferrer"
-                                        )
-                                    }
-                                    className="flex items-center justify-center gap-x-2"
-                                >
-                                    <Icon name={"GitHub"} className="h-[14px] w-[14px]" />
-                                    Backend
-                                </Button>
-                                <Button
-                                    className="sm:col-span-2"
-                                    onClick={() =>
-                                        window.open(project.video, "_blank", "noopener,noreferrer")
-                                    }
-                                >
-                                    Demo
-                                </Button>
-                            </div>
+                                    <Image
+                                        src={project.image}
+                                        alt={`${project.title} application interface`}
+                                        fill
+                                        sizes="58vw"
+                                        className="object-cover object-top"
+                                        priority={activeProject === 0}
+                                    />
+                                </m.a>
+                            </AnimatePresence>
+                            <div className="project-visual-orbit" aria-hidden="true" />
                         </div>
                     </div>
-                ))}
+                    <div>
+                        {projects.items.map((item, index) => (
+                            <ProjectStep
+                                key={item.title}
+                                project={item}
+                                index={index}
+                                activeIndex={activeProject}
+                                onActive={setActiveProject}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                <div className="space-y-8 lg:hidden">
+                    {projects.items.map((item, index) => (
+                        <MobileProjectCard key={item.title} project={item} index={index} />
+                    ))}
+                </div>
             </div>
         </section>
     );

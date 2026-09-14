@@ -1,25 +1,30 @@
 import About from "@/sections/About";
 import ContactMe from "@/sections/Contact";
+import Education from "@/sections/Education";
+import Experience from "@/sections/Experience";
 import Home from "@/sections/Home";
 import PersonalProjects from "@/sections/PersonalProjects";
+import TechStack from "@/sections/TechStack";
 
 export default function Page() {
     return (
-        <div>
+        <div className="overflow-clip">
             <main>
                 <Home />
-                <div className="flex justify-center">
-                    <div className="max-w-[90%] md:max-w-[80%] xl:max-w-[75%]">
-                        <About />
-                        <PersonalProjects />
-                        <ContactMe />
-                    </div>
-                </div>
+                <TechStack />
+                <About />
+                <Experience />
+                <PersonalProjects />
+                <Education />
+                <ContactMe />
             </main>
-            <footer className="py-10 ">
-                <p className="text-center">
-                    Developed by <span className="highlight-text">Raphael Salayog</span>
-                </p>
+            <footer className="page-shell border-t border-orbit/50 py-8">
+                <div className="flex flex-col gap-2 text-sm text-moonlight/60 sm:flex-row sm:items-center sm:justify-between">
+                    <p>Designed and developed by Raphael Salayog.</p>
+                    <a className="quiet-link w-fit" href="#home">
+                        Back to the stars
+                    </a>
+                </div>
             </footer>
         </div>
     );
